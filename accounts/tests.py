@@ -1,6 +1,8 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-
+from django.urls import resolve, reverse
+from .forms import CustomUserCreationForm
+from .views import SigupView
 
 CustomUser = get_user_model()
 
@@ -32,4 +34,23 @@ class CustomUserTest(TestCase):
         self.assertTrue(self.super_user.is_superuser)
         self.assertTrue(self.super_user.is_active)
 
-        
+
+class SignupTest(TestCase):
+    def setUp(self):
+        url = reverse('signup')
+        self.answer = self.client.get(url)
+    
+    def test_signup_page_name(self):
+        self.assertEqual(self.answer.status_code, 200)
+    
+    def test_signup_page_template(self):
+        self.assertTemplateUsed(self.answer, 'registration/signup.html')
+        self.assertContains(self.answer, 'Signup')
+    
+    def test_signup_page_form_used(self):
+        form = self.answer.context['form']
+        self.assertIsInstance(form, CustomUserCreationForm)
+    
+    def test_signup_page_view_used(self):
+        view = resolve(reverse('signup'))
+        self.assertEqual(view.func.__name__, SigupView.as_view().__name__)

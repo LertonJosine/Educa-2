@@ -1,0 +1,51 @@
+{% extends '../_base.html' %}
+
+{% block main %}
+  <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>Profile</h2>
+        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium.</p>
+      </div>
+    </div>
+    <!-- End Breadcrumbs -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+        <div class="row mt-5">
+          <div class="col-lg-8 mt-5 mt-lg-0">
+            <form action="" method="post" role="form">
+              {% csrf_token %}
+              <div class="col-md-6 form-group">{{ form.username }}</div>
+              <div class="col-md-6 form-group">{{ form.email }}</div>
+              <div class="|">
+                <button type="submit">Update</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    let inputs = document.querySelectorAll('input')
+    inputs.forEach((input) => {
+      input.classList.add('form-control')
+      if (input.name == 'username') {
+        input.setAttribute('placeholder', 'Your username')
+      }
+      if (input.name == 'email') {
+        input.setAttribute('placeholder', 'Your Email')
+      }
+    })
+    
+    let form_elements = document.querySelectorAll('form > *')
+    form_elements.forEach((form_element) => {
+      form_element.setAttribute('style', 'margin-bottom:15px')
+    })
+    
+    let buttom_submit = document.querySelector('button')
+    buttom_submit.setAttribute('style', 'border:none; margin-left:0px;')
+    buttom_submit.classList.add('get-started-btn')
+  </script>
+{% endblock %}

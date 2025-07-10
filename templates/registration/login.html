@@ -1,9 +1,60 @@
+{% extends '../_base.html' %}
+
 {% block main %}
-  <h1>Login</h1>
-  <form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <p>Forgot your password? <a href="{% url 'password_reset' %}">Reset password.</a></p>
-    <button type="submit">Login</button>
-  </form>
+  <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>Login</h2>
+        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium.</p>
+      </div>
+    </div>
+    <!-- End Breadcrumbs -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+        <div class="row mt-5">
+          <div class="col-lg-8 mt-5 mt-lg-0">
+            <form action="" method="post" role="form">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div class="|">
+                <button type="submit">Update</button>
+              </div>
+            </form>
+            <p>
+              Forgot your password? <a href="{% url 'password_reset' %}">Reset</a>
+            </p>
+            <p>
+              Dont't have an account? <a href="{% url 'signup' %}">Signup</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    let labels = document.querySelectorAll('label')
+    labels.forEach((label) => {
+      label.style.display = 'none'
+    })
+    let inputs = document.querySelectorAll('input')
+    inputs.forEach((input) => {
+      input.classList.add('form-control')
+      if (input.name == 'username') {
+        input.setAttribute('placeholder', 'Your username')
+      }
+      if (input.name == 'password') {
+        input.setAttribute('placeholder', 'Your Password')
+      }
+    })
+    
+    let form_elements = document.querySelectorAll('form > *')
+    form_elements.forEach((form_element) => {
+      form_element.setAttribute('style', 'margin-bottom:15px')
+    })
+    
+    let buttom_submit = document.querySelector('button')
+    buttom_submit.setAttribute('style', 'border:none; margin-left:0px;')
+    buttom_submit.classList.add('get-started-btn')
+  </script>
 {% endblock %}

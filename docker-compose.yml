@@ -30,4 +30,6 @@ services:
 volumes:
   postgres_data:
     name: educa_db
+  .:
+    name: educa2
   

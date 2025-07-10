@@ -1,5 +1,23 @@
 {% extends '../_base.html' %}
+{% block header %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto"><a href="{% url 'home' %}">Educa</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
 
+      <nav id="navbar" class="navbar order-last order-lg-0"></nav>
+      <!-- .navbar -->
+
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+      </form>
+    </div>
+  </header>
+  <!-- End Header -->
+{% endblock %}
 {% block main %}
   <main id="main">
     <!-- ======= Breadcrumbs ======= -->
@@ -44,8 +62,10 @@
       form_element.setAttribute('style', 'margin-bottom:15px')
     })
     
-    let buttom_submit = document.querySelector('button')
-    buttom_submit.setAttribute('style', 'border:none; margin-left:0px;')
-    buttom_submit.classList.add('get-started-btn')
+    let submit_buttons = document.querySelectorAll('button')
+    submit_buttons.forEach((submit_button) => {
+      submit_button.setAttribute('style', 'border:none; margin-left:0px;')
+      submit_button.classList.add('get-started-btn')
+    })
   </script>
 {% endblock %}

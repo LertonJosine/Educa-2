@@ -1,8 +1,61 @@
+{% extends '../_base.html' %}
+
 {% block main %}
-<h1>Signup</h1>
-<form action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Signup</button>
-</form>
+  <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>Signup</h2>
+        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium.</p>
+      </div>
+    </div>
+    <!-- End Breadcrumbs -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+        <div class="row mt-5">
+          <div class="col-lg-8 mt-5 mt-lg-0">
+            <form action="" method="post" role="form" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div class="|">
+                <button type="submit">Signup</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    let labels = document.querySelectorAll('label');
+    labels.forEach(label=>label.style.display='none');
+    let inputs = document.querySelectorAll('input')
+    inputs.forEach((input) => {
+      input.classList.add('form-control')
+      if (input.name == 'username') {
+        input.setAttribute('placeholder', 'Your username')
+      }
+      if (input.name == 'email') {
+        input.setAttribute('placeholder', 'Your Email')
+      }
+    
+      if (input.name == 'password1') {
+        input.setAttribute('placeholder', 'Your Password')
+      }
+      if (input.name == 'password2') {
+        input.setAttribute('placeholder', 'Confirm Your Password')
+      }
+    })
+    
+    let form_elements = document.querySelectorAll('form > *')
+    form_elements.forEach((form_element) => {
+      form_element.setAttribute('style', 'margin-bottom:15px')
+    })
+    
+    let submit_buttons = document.querySelectorAll('button')
+    submit_buttons.forEach((submit_button) => {
+      submit_button.setAttribute('style', 'border:none; margin-left:0px;')
+      submit_button.classList.add('get-started-btn')
+    })
+  </script>
 {% endblock %}

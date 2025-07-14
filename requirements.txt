@@ -1,5 +1,6 @@
 asgiref==3.8.1
 backports-datetime-fromisoformat==2.0.3
+dj-database-url==3.0.1
 Django==5.2.3
 environs==14.2.0
 gunicorn==23.0.0

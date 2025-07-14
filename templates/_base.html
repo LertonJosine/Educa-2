@@ -55,6 +55,11 @@
                     <li>
                       <a href="{% url 'profile' user.pk %}">Profile</a>
                     </li>
+                    {% if user.is_superuser %}
+                      <li>
+                        <a href="{% url 'create_course' %}">Create Course</a>
+                      </li>
+                    {% endif %}
                   {% else %}
                     <li>
                       <a href="{% url 'signup' %}">Signup</a>
@@ -71,7 +76,7 @@
           </nav>
           <!-- .navbar -->
 
-          <a href="#" class="get-started-btn">Get Started</a>
+          <a href="{% url 'list_courses' %}" class="get-started-btn">Get Started</a>
         </div>
       </header>
       <!-- End Header -->
@@ -91,6 +96,7 @@
 
     <!-- Template Main JS File -->
     <script src="{% static '/js/main.js' %}"></script>
+    <script src="{% static 'js/personalization.js' %}"></script>
     {% block footer %}
       <!-- ======= Footer ======= -->
       <footer id="footer">

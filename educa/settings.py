@@ -1,7 +1,10 @@
 
 from environs import Env
 from pathlib import Path
+import socket
 
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
 env = Env()
 env.read_env()
 

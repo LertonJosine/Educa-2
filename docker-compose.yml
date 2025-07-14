@@ -10,8 +10,8 @@ services:
     depends_on:
       - db
     environment:
-      - DJANGO_SECRET_KEY=django-insecure-^c*dx-%xruu%dlpw9(7s2qq@+=yc04c0wq_$e%cf57(1yvu@=+
-      - DJANGO_DEBUG=True
+      - DJANGO_SECRET_KEY=h13MuUT9HY8_1OS9h9uWAnVToBNcfyzh88PFF2oeHSSw2tnOCZQ
+      - DJANGO_DEBUG=False
       - DJANGO_DB_ENGINE=django.db.backends.postgresql
       - DJANGO_DB_NAME=postgres
       - DJANGO_DB_USER=lerton
@@ -23,7 +23,13 @@ services:
       - DJANGO_EMAIL_HOST_PASSWORD=pmpcpeqfnyqnasxg
       - DJANGO_EMAIL_USE_TLS=True
       - DJANGO_EMAIL_PORT=587
-  
+      - DJANGO_SECURE_SSL_REDIRECT=True
+      - DJANGO_SECURE_HSTS_SECONDS=2592000
+      - DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS=True
+      - DJANGO_SECURE_HSTS_PRELOAD=True
+      - DJANGO_SESSION_COOKIE_SECURE=True
+      - DJANGO_SESSION_CSRF_COOKIE_SECURE=True
+      - DJANGO_DB_URL=postgresql://educa_db_8x06_user:QNzCij322Yvetks2RUKOHAz1KPxpZcBl@dpg-d1qln76r433s73eheh00-a/educa_db_8x06
   db:
     image: postgres:14
     volumes:

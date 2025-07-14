@@ -44,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'educa.urls'
@@ -72,14 +73,7 @@ WSGI_APPLICATION = 'educa.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': env('DJANGO_DB_ENGINE'),
-        'NAME': env('DJANGO_DB_NAME'),
-        'USER': env('DJANGO_DB_USER'),
-        'PASSWORD': env('DJANGO_DB_PASSWORD'),
-        'HOST': env('DJANGO_DB_HOST'),
-        'PORT': env.int('DJANGO_DB_PORT')
-    }
+    'default': env.dj_db_url('DJANGO_DB_URL')
 }
 
 
@@ -140,3 +134,9 @@ EMAIL_PORT = env.int("DJANGO_EMAIL_PORT")
 EMAIL_USE_TLS = env.bool("DJANGO_EMAIL_USE_TLS")
 EMAIL_HOST_PASSWORD = env("DJANGO_EMAIL_HOST_PASSWORD")
 EMAIL_HOST_USER = env("DJANGO_EMAIL_HOST_USER")
+SECURE_SSL_REDIRECT = env.bool('DJANGO_SECURE_SSL_REDIRECT')
+SECURE_HSTS_SECONDS = env.int('DJANGO_SECURE_HSTS_SECONDS')
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool('DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS')
+SECURE_HSTS_PRELOAD= env.bool('DJANGO_SECURE_HSTS_PRELOAD')
+SESSION_COOKIE_SECURE =env.bool('DJANGO_SESSION_COOKIE_SECURE')
+CSRF_COOKIE_SECURE= env.bool('DJANGO_SESSION_CSRF_COOKIE_SECURE')

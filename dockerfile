@@ -10,3 +10,5 @@ ENV PYTHONDONTWRITEBITECODE=1
 ENV PYTHONUNBUFFERED=1
 
 COPY . .
+
+CMD [ "sh" "-c" "gunicorn --bind 0.0.0.0:8000 educa:wsgi:application && python manage.py migrate" ]

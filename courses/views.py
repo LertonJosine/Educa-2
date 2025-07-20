@@ -15,7 +15,7 @@ class CourseDetailsView(DetailView):
     context_object_name = 'course'
 
 
-class CreateCourseView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+class CreateCourseView(LoginRequiredMixin, CreateView):
     model = Course
     template_name = 'create_course.html'
     fields = [
@@ -27,4 +27,4 @@ class CreateCourseView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         'resume'
     ]
     
-    permission_required = ('is_superuser',)
+    # permission_required = ('is_superuser',)

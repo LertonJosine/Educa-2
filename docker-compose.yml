@@ -30,6 +30,7 @@ services:
       - DJANGO_SESSION_COOKIE_SECURE=True
       - DJANGO_SESSION_CSRF_COOKIE_SECURE=True
       - DJANGO_DB_URL=postgresql://educa_db_8x06_user:QNzCij322Yvetks2RUKOHAz1KPxpZcBl@dpg-d1qln76r433s73eheh00-a/educa_db_8x06
+      
   db:
     image: postgres:14
     volumes:

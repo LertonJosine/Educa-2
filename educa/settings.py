@@ -37,7 +37,20 @@ INSTALLED_APPS = [
     'accounts',
     'pages',
     'courses',
+    'cloudinary',
+    'cloudinary_storage',
 ]
+
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env('CLOUD_NAME'),
+    'API_KEY': env.int('API_KEY'),
+    'API_SECRET': env('API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

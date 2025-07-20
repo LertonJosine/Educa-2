@@ -11,4 +11,4 @@ ENV PYTHONUNBUFFERED=1
 
 COPY . .
 
-CMD [ "sh" "-c" "gunicorn --bind 0.0.0.0:8000 educa:wsgi:application && python manage.py makemigrations && python manage.py migrate" ]
+CMD [ "sh", "-c", "python manage.py makemigrations && python manage.py migrate && gunicorn --bind 0.0.0.0:8000 educa:wsgi:application" ]

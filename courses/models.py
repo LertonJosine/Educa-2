@@ -8,7 +8,7 @@ class Course(models.Model):
     name = models.CharField(max_length=150)
     trainer = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    cover = models.CloudinaryField('covers')
+    cover = CloudinaryField('covers')
     sits = models.IntegerField()
     resume = models.TextField()
     

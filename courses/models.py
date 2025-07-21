@@ -1,14 +1,14 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
-
+from cloudinary.models import CloudinaryField
 
 
 class Course(models.Model):
     name = models.CharField(max_length=150)
     trainer = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    cover = models.FileField(upload_to='course/covers')
+    cover = models.CloudinaryField('covers')
     sits = models.IntegerField()
     resume = models.TextField()
     
